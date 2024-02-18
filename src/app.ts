@@ -14,9 +14,9 @@ wss.on('connection', function connection(ws) {
 
     ws.send('Hola desde el servidor.');
 
-    setInterval(() => {
-        ws.send('Hola de nuevo')
-    }, 2000);
+    ws.on('close', () => {
+        console.log('Client disconnected')
+    })
 });
 
 console.log('http://localhost:5796')
