@@ -18,8 +18,16 @@ wss.on('connection', function connection(ws) {
 
         // ws.send( JSON.stringify( payload ) );
 
+        //* A todos - Incluyente 
+        // wss.clients.forEach(function each(client) {
+        //     if (client.readyState === WebSocket.OPEN) {
+        //         client.send(payload, { binary: false });
+        //     }
+        // });
+
+        //* A todos - Excluyente
         wss.clients.forEach(function each(client) {
-            if (client.readyState === WebSocket.OPEN) {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
                 client.send(payload, { binary: false });
             }
         });
